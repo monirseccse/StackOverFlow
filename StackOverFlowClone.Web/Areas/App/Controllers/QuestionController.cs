@@ -438,11 +438,14 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
                     }
                 }
 
-                TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
+                else
                 {
-                    Message = "Vote already recorded",
-                    Type = ResponseTypes.Success
-                });
+                    TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
+                    {
+                        Message = "Vote already recorded",
+                        Type = ResponseTypes.Success
+                    });
+                }
             }
 
             return RedirectToAction("Index");

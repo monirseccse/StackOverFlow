@@ -13,7 +13,7 @@ namespace StackOverFlowClone.Web.Areas.App.Models.Questions
         public string Description { get; set; }
         public string TriedAndExpecting { get; set; }
         public string Tag { get; set; }
-        public string DuplicateQuestion { get; set; }
+        public string? DuplicateQuestion { get; set; }
         public int Vote { get; set; }
         public int Answer { get; set; }
         public Guid UserId { get; set; }
