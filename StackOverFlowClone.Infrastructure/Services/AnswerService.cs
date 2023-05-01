@@ -26,6 +26,12 @@ namespace StackOverFlowClone.Infrastructure.Services
 
             _applicationUnitOfWork.Answer.Add(entity);
             _applicationUnitOfWork.SaveChanges();
+
+            var question = _applicationUnitOfWork.Questions.FindBy(answer.QuestionId);
+            question.Answer = question.Answer + 1;
+
+            _applicationUnitOfWork.Questions.Update(question);
+            _applicationUnitOfWork.SaveChanges();
         }
 
         public async Task DeleteAnswerAsync(Guid id)

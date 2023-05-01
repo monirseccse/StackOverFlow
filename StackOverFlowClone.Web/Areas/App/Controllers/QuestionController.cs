@@ -160,30 +160,46 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
         [Authorize]
         public async Task<IActionResult> QuestionUpVote(Guid id)
         {
-            var model = _scope.Resolve<QuestionCreateModel>();
-
-            await model.LoadQuestionAsync(id);
-
-            if (await model.isNotAlreadyUpVoted())
+            try
             {
-                if(await model.isNotOwner())
+                var model = _scope.Resolve<QuestionCreateModel>();
+
+                await model.LoadQuestionAsync(id);
+
+                if (await model.isNotAlreadyUpVoted())
                 {
-                    await model.UpVote();
+                    if (await model.isNotOwner())
+                    {
+                        await model.UpVote();
+                        TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
+                        {
+                            Message = "Vote recorded successfully",
+                            Type = ResponseTypes.Success
+                        });
+                    }
+                    else
+                    {
+                        TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
+                        {
+                            Message = "owner can't upvote",
+                            Type = ResponseTypes.Success
+                        });
+                    }
                 }
                 else
                 {
                     TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
                     {
-                        Message = "owner can't upvote",
+                        Message = "Vote already exists",
                         Type = ResponseTypes.Success
                     });
                 }
             }
-            else
+            catch (Exception ex)
             {
                 TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
                 {
-                    Message = "Vote already exists",
+                    Message = "error ",
                     Type = ResponseTypes.Success
                 });
             }
@@ -195,33 +211,50 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
         [Authorize]
         public async Task<IActionResult> QuestionDownVote(Guid id)
         {
-            var model = _scope.Resolve<QuestionCreateModel>();
-
-            await model.LoadQuestionAsync(id);
-
-            if (await model.isNotAlreadyDownVoted())
+            try
             {
-                if (await model.isNotOwner())
+                var model = _scope.Resolve<QuestionCreateModel>();
+
+                await model.LoadQuestionAsync(id);
+
+                if (await model.isNotAlreadyDownVoted())
                 {
-                    await model.DownVote();
+                    if (await model.isNotOwner())
+                    {
+                        await model.DownVote();
+                        TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
+                        {
+                            Message = "Vote recorded successfully",
+                            Type = ResponseTypes.Success
+                        });
+                    }
+                    else
+                    {
+
+                        TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
+                        {
+                            Message = "Owner can't downvote",
+                            Type = ResponseTypes.Success
+                        });
+                    }
+
                 }
                 else
                 {
 
                     TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
                     {
-                        Message = "Owner can't downvote",
+                        Message = "Vote already exists",
                         Type = ResponseTypes.Success
                     });
                 }
-               
             }
-            else
+            catch (Exception ex)
             {
 
                 TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
                 {
-                    Message = "Vote already exists",
+                    Message = "error Occured",
                     Type = ResponseTypes.Success
                 });
             }

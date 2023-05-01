@@ -134,7 +134,7 @@ namespace StackOverFlowClone.Web.Areas.App.Models.Answers
             if (question == null)
                 return false;
 
-            return question.UserId == UserId;
+            return question.UserId == GetLoggedInUserId();
         }
 
         public async Task<object?> GetAnswerById(Guid answerId)

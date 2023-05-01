@@ -31,14 +31,24 @@ namespace StackOverFlowClone.Infrastructure.Services
                 else
                     throw new InvalidOperationException("Vote Already exists");
             }
+            else
+            {
 
-            var entity = _mapper.Map<VoteForQuestionEO>(vote);
-            _applicationUnitOfWork.VoteForQuestion.Add(entity);
-            _applicationUnitOfWork.SaveChanges();
+                var entity = _mapper.Map<VoteForQuestionEO>(vote);
+                _applicationUnitOfWork.VoteForQuestion.Add(entity);
+                _applicationUnitOfWork.SaveChanges();
 
+                UpdateQuestion(entity, vote);
+            }
+            
+        }
+
+        private void UpdateQuestion(VoteForQuestionEO entity, VoteForQuestionBO vote)
+        {
             var answer = _applicationUnitOfWork.Questions.FindBy(entity.QuestionId);
 
             answer.Vote = vote.isUpVote ? answer.Vote + 1 : answer.Vote - 1;
+
             _applicationUnitOfWork.Questions.Update(answer);
             _applicationUnitOfWork.SaveChanges();
         }
@@ -59,6 +69,8 @@ namespace StackOverFlowClone.Infrastructure.Services
             _mapper.Map(vote, entity);
             _applicationUnitOfWork.VoteForQuestion.Update(entity);
             _applicationUnitOfWork.SaveChanges();
+
+            UpdateQuestion(entity, vote);
         }
 
         public async Task<VoteForQuestionBO> GetVoteDetail(Guid questionId, Guid userId)
