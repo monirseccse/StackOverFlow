@@ -119,10 +119,11 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(QuestionCreateModel model)
         {
-            var resolve = _scope.Resolve<QuestionCreateModel>();
+         
             try
             {
-                await resolve.EditAsync(model);
+                model.ResolveDependency(_scope);
+                await model.EditAsync(model);
                 TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
                 {
                     Message = "Question Updated Successfully",
@@ -296,7 +297,7 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
                         Type = ResponseTypes.Success
                     });
 
-                    RedirectToAction("Asked");
+                    RedirectToAction("Index");
                 }
                 catch (DuplicateException ioe)
                 {
@@ -308,7 +309,7 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
                         Type = ResponseTypes.Danger
                     });
 
-                    return RedirectToAction("Asked");
+                    return RedirectToAction("Index");
                 }
                 catch (Exception ex)
                 {
@@ -319,7 +320,7 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
                         Type = ResponseTypes.Danger
                     });
 
-                    return RedirectToAction("Asked");
+                    return RedirectToAction("Index");
                 }
             }
 
@@ -399,11 +400,11 @@ namespace StackOverFlowClone.Web.Areas.App.Controllers
 
                 TempData.Put<ResponseModel>("ResponseMessage", new ResponseModel
                 {
-                    Message = "Successfully deleted question.",
+                    Message = "Successfully deleted Answer.",
                     Type = ResponseTypes.Success
                 });
 
-                return RedirectToAction("Asked");
+                return RedirectToAction("Index");
             }
             else
             {

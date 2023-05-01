@@ -136,9 +136,7 @@ namespace StackOverFlowClone.Web.Areas.App.Models.Questions
 
         public async Task<bool> isNotOwner()
         {
-            var vote = await _voteForQuestionService.GetVoteDetailByQuestionId(Id);
-
-            return vote == null;
+            return UserId != GetLoggedInUserId();
         }
     }
 }

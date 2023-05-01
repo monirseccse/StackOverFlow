@@ -191,9 +191,7 @@ namespace StackOverFlowClone.Web.Areas.App.Models.Answers
 
         public async Task<bool> isNotTheOwner()
         {
-            var vote = await _voteForAnswerService.GetVoteDetailByAnswerId(Id);
-
-            return vote != null ? vote.UserId != GetLoggedInUserId() : false;
+            return UserId != GetLoggedInUserId();
         }
     }
 }

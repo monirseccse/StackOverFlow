@@ -54,7 +54,7 @@ namespace StackOverFlowClone.Web.Controllers
 
                 var user = new ApplicationUser
                 {
-                    UserName = model.Name,
+                    UserName = model.Email,
                     Name = model.Name,
                     Email = model.Email
                 };
