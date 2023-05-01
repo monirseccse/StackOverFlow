@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33103.184
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StackOverFlowClone.Web", "StackOverFlowClone.Web\StackOverFlowClone.Web.csproj", "{C15D817A-47D3-4CC8-A540-D3475D62E5A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverFlowClone.Infrastructure", "StackOverFlowClone.Infrastructure\StackOverFlowClone.Infrastructure.csproj", "{B36A62CF-99B4-4C20-87CB-7CD8D2BBED36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C15D817A-47D3-4CC8-A540-D3475D62E5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15D817A-47D3-4CC8-A540-D3475D62E5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15D817A-47D3-4CC8-A540-D3475D62E5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15D817A-47D3-4CC8-A540-D3475D62E5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B36A62CF-99B4-4C20-87CB-7CD8D2BBED36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B36A62CF-99B4-4C20-87CB-7CD8D2BBED36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B36A62CF-99B4-4C20-87CB-7CD8D2BBED36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B36A62CF-99B4-4C20-87CB-7CD8D2BBED36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3381C893-59F6-4446-93BB-E13DFE7102B5}
+	EndGlobalSection
+EndGlobal

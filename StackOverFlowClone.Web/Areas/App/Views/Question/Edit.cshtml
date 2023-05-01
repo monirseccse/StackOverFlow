@@ -1,0 +1,56 @@
+﻿@model QuestionCreateModel;
+@{
+    ViewData["Title"] = "Edit Question";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Edit Question</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form" asp-antiforgery="true" asp-action="Edit"
+                      asp-area="App" asp-controller="Question" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label asp-for="Title"></label>
+                            <input type="text" class="form-control" asp-for="Title" placeholder="Enter title">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description"></label>
+                            <input type="text" class="form-control" asp-for="Description" placeholder="Enter Description">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TriedAndExpecting"></label>
+                            <input type="text" class="form-control" asp-for="TriedAndExpecting" placeholder="Enter Tried And Expecting">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Tag"></label>
+                            <input type="text" class="form-control" asp-for="Tag" placeholder="Enter Tag">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DuplicateQuestion"></label>
+                            <input type="text" class="form-control" asp-for="DuplicateQuestion" placeholder="Enter Duplicate Question">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.card -->
+
+        </div>
+        <!--/.col (left) -->
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->
+

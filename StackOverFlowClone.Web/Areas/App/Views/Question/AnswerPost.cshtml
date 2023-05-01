@@ -1,0 +1,65 @@
+﻿@model AnswerCreateModel
+@{
+    ViewData["Title"] = "AnswerPost";
+}
+
+<div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-6">
+            <h1>@ViewData["Title"]</h1>
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Column -->
+            <div class="col-12">
+                <!-- Card -->
+                <div class="card">
+
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="card card-info">
+                                <!-- form start -->
+                                <form class="form-horizontal" method="post" asp-antiforgery="true" asp-action="CreateAnswer" asp-controller="Question" asp-area="App" asp-route-Id="@Model.QuestionId">
+                                    <div class="card-body">
+                                        <div class="form-group row" style="padding-bottom: 12px;">
+                                            <label class="col-sm-2 col-form-label" asp-for="Description">Description</label>
+                                            <div class="col-sm-12">
+                                                <input type ="text" class="form-control" asp-for="Description" placeholder="Description" required>
+                                                <span asp-validation-for="Description" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <button type="submit" class="btn btn-success float-right" style="margin-left: 26px;">Save</button>
+                                            <button class="btn btn-default float-right" type="reset" value="Reset"
+                                                    onclick="location.href='@Url.Action("Index", "Question", new { Area = "App" })'">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- /.tab-content -->
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.column -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
