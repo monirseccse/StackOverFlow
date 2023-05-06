@@ -23,11 +23,11 @@
                             <input type="text" class="form-control" asp-for="Title" placeholder="Enter title">
                         </div>
                         <div class="form-group">
-                            <label asp-for="Description"></label>
+                            <label asp-for="Description">What are the details of your problem?</label>
                             <input type="text" class="form-control" asp-for="Description" placeholder="Enter Description">
                         </div>
                         <div class="form-group">
-                            <label asp-for="TriedAndExpecting"></label>
+                            <label asp-for="TriedAndExpecting">What did you try and what you were expecting?</label>
                             <input type="text" class="form-control" asp-for="TriedAndExpecting" placeholder="Enter Tried And Expecting">
                         </div>
                         <div class="form-group">
@@ -35,7 +35,7 @@
                             <input type="text" class="form-control" asp-for="Tag" placeholder="Enter Tag">
                         </div>
                         <div class="form-group">
-                            <label asp-for="DuplicateQuestion"></label>
+                            <label asp-for="DuplicateQuestion">Review Questions already on StackOverflow to see if your question is duplicate?</label>
                             <input type="text" class="form-control" asp-for="DuplicateQuestion" placeholder="Enter Duplicate Question">
                         </div>
                         <input type="hidden" name="UserId" value="@Model.UserId" />
